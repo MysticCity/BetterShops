@@ -1,22 +1,7 @@
 package max.hubbard.bettershops.Listeners;
 
-import max.hubbard.bettershops.Configurations.Blacklist;
-import max.hubbard.bettershops.Configurations.Config;
-import max.hubbard.bettershops.Configurations.Language;
-import max.hubbard.bettershops.Configurations.Permissions;
-import max.hubbard.bettershops.Menus.MenuType;
-import max.hubbard.bettershops.ShopManager;
-import max.hubbard.bettershops.Shops.FileShop;
-import max.hubbard.bettershops.Shops.Items.Actions.ClickableItem;
-import max.hubbard.bettershops.Shops.Items.FileShopItem;
-import max.hubbard.bettershops.Shops.Items.SQLShopItem;
-import max.hubbard.bettershops.Shops.Items.ShopItem;
-import max.hubbard.bettershops.Shops.Shop;
-import max.hubbard.bettershops.Shops.Types.Holo.ShopHologram;
-import max.hubbard.bettershops.TradeManager;
-import max.hubbard.bettershops.Utils.ItemUtils;
-import max.hubbard.bettershops.Utils.Stocks;
-import max.hubbard.bettershops.Utils.Trade;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -27,7 +12,23 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
+import max.hubbard.bettershops.ShopManager;
+import max.hubbard.bettershops.TradeManager;
+import max.hubbard.bettershops.Configurations.Blacklist;
+import max.hubbard.bettershops.Configurations.Config;
+import max.hubbard.bettershops.Configurations.Language;
+import max.hubbard.bettershops.Configurations.Permissions;
+import max.hubbard.bettershops.Menus.MenuType;
+import max.hubbard.bettershops.Shops.FileShop;
+import max.hubbard.bettershops.Shops.Shop;
+import max.hubbard.bettershops.Shops.Items.FileShopItem;
+import max.hubbard.bettershops.Shops.Items.SQLShopItem;
+import max.hubbard.bettershops.Shops.Items.ShopItem;
+import max.hubbard.bettershops.Shops.Items.Actions.ClickableItem;
+import max.hubbard.bettershops.Shops.Types.Holo.ShopHologram;
+import max.hubbard.bettershops.Utils.ItemUtils;
+import max.hubbard.bettershops.Utils.Stocks;
+import max.hubbard.bettershops.Utils.Trade;
 
 /**
  * ***********************************************************************
@@ -99,7 +100,7 @@ public class AddItemListener implements Listener {
                                                     ShopItem sItem = shop.createShopItem(item, s, page, false);
 
                                                     p.sendMessage(Language.getString("Messages", "Prefix") + Language.getString("Messages", "AddItem"));
-                                                    p.playSound(p.getLocation(), Sound.NOTE_PLING, 400, 400);
+                                                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 400, 400);
 
 
                                                     int am = ite.getAmount() - 1;
@@ -144,7 +145,7 @@ public class AddItemListener implements Listener {
                                                     } else {
                                                         shop.getMenu(MenuType.OWNER_BUYING).draw(p, shopItem.getPage());
                                                     }
-                                                    p.playSound(p.getLocation(), Sound.NOTE_PLING, 400, 400);
+                                                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 400, 400);
                                                 }
                                             } else {
                                                 p.sendMessage(Language.getString("Messages", "Prefix") + Language.getString("Messages", "Blacklist"));
@@ -171,7 +172,7 @@ public class AddItemListener implements Listener {
                                                     ShopItem sItem = shop.createShopItem(item, s, page, true);
 
                                                     p.sendMessage(Language.getString("Messages", "Prefix") + Language.getString("Messages", "AddItem"));
-                                                    p.playSound(p.getLocation(), Sound.NOTE_PLING, 400, 400);
+                                                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 400, 400);
 
                                                     if (shop.isServerShop()) {
                                                         shop.getMenu(MenuType.MAIN_SELLING).draw(p, page);

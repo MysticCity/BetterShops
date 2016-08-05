@@ -1,29 +1,19 @@
 package max.hubbard.bettershops.Shops;
 
-import com.gmail.filoghost.holographicdisplays.disk.HologramDatabase;
-import com.gmail.filoghost.holographicdisplays.object.NamedHologram;
-import com.gmail.filoghost.holographicdisplays.object.NamedHologramManager;
-import max.hubbard.bettershops.Configurations.Config;
-import max.hubbard.bettershops.Configurations.Language;
-import max.hubbard.bettershops.Core;
-import max.hubbard.bettershops.Menus.MenuType;
-import max.hubbard.bettershops.Menus.ShopMenu;
-import max.hubbard.bettershops.Menus.ShopMenus.*;
-import max.hubbard.bettershops.ShopManager;
-import max.hubbard.bettershops.Shops.Items.FileShopItem;
-import max.hubbard.bettershops.Shops.Items.ShopItem;
-import max.hubbard.bettershops.Shops.Types.Holo.CreateHologram;
-import max.hubbard.bettershops.Shops.Types.Holo.DeleteHoloShop;
-import max.hubbard.bettershops.Shops.Types.Holo.HologramManager;
-import max.hubbard.bettershops.Shops.Types.Holo.Icons.ShopIcon;
-import max.hubbard.bettershops.Shops.Types.Holo.ShopHologram;
-import max.hubbard.bettershops.Shops.Types.NPC.*;
-import max.hubbard.bettershops.TradeManager;
-import max.hubbard.bettershops.Utils.NPCInfo;
-import max.hubbard.bettershops.Utils.TimingsManager;
-import max.hubbard.bettershops.Utils.Transaction;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
 import org.apache.commons.io.FileUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.block.Sign;
@@ -31,9 +21,57 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import com.gmail.filoghost.holographicdisplays.disk.HologramDatabase;
+import com.gmail.filoghost.holographicdisplays.object.NamedHologram;
+import com.gmail.filoghost.holographicdisplays.object.NamedHologramManager;
+
+import max.hubbard.bettershops.Core;
+import max.hubbard.bettershops.ShopManager;
+import max.hubbard.bettershops.TradeManager;
+import max.hubbard.bettershops.Configurations.Config;
+import max.hubbard.bettershops.Configurations.Language;
+import max.hubbard.bettershops.Menus.MenuType;
+import max.hubbard.bettershops.Menus.ShopMenu;
+import max.hubbard.bettershops.Menus.ShopMenus.AmountChooser;
+import max.hubbard.bettershops.Menus.ShopMenus.AutoStock;
+import max.hubbard.bettershops.Menus.ShopMenus.BuyItem;
+import max.hubbard.bettershops.Menus.ShopMenus.Cart;
+import max.hubbard.bettershops.Menus.ShopMenus.Cooldowns;
+import max.hubbard.bettershops.Menus.ShopMenus.ItemManagerBuying;
+import max.hubbard.bettershops.Menus.ShopMenus.ItemManagerSelling;
+import max.hubbard.bettershops.Menus.ShopMenus.KeeperItemManager;
+import max.hubbard.bettershops.Menus.ShopMenus.KeeperManager;
+import max.hubbard.bettershops.Menus.ShopMenus.LiveEconomy;
+import max.hubbard.bettershops.Menus.ShopMenus.MainBuying;
+import max.hubbard.bettershops.Menus.ShopMenus.MainSelling;
+import max.hubbard.bettershops.Menus.ShopMenus.NPCChoose;
+import max.hubbard.bettershops.Menus.ShopMenus.NPCConfigure;
+import max.hubbard.bettershops.Menus.ShopMenus.OwnerBuying;
+import max.hubbard.bettershops.Menus.ShopMenus.OwnerSelling;
+import max.hubbard.bettershops.Menus.ShopMenus.PlayerBlacklist;
+import max.hubbard.bettershops.Menus.ShopMenus.Rearrange;
+import max.hubbard.bettershops.Menus.ShopMenus.SearchEngine;
+import max.hubbard.bettershops.Menus.ShopMenus.SellItem;
+import max.hubbard.bettershops.Menus.ShopMenus.ShopSettings;
+import max.hubbard.bettershops.Menus.ShopMenus.TradeChoose;
+import max.hubbard.bettershops.Menus.ShopMenus.TradeConfirm;
+import max.hubbard.bettershops.Menus.ShopMenus.Trading;
+import max.hubbard.bettershops.Shops.Items.FileShopItem;
+import max.hubbard.bettershops.Shops.Items.ShopItem;
+import max.hubbard.bettershops.Shops.Types.Holo.CreateHologram;
+import max.hubbard.bettershops.Shops.Types.Holo.DeleteHoloShop;
+import max.hubbard.bettershops.Shops.Types.Holo.HologramManager;
+import max.hubbard.bettershops.Shops.Types.Holo.ShopHologram;
+import max.hubbard.bettershops.Shops.Types.Holo.Icons.ShopIcon;
+import max.hubbard.bettershops.Shops.Types.NPC.CitizensShop;
+import max.hubbard.bettershops.Shops.Types.NPC.DeleteNPC;
+import max.hubbard.bettershops.Shops.Types.NPC.EntityInfo;
+import max.hubbard.bettershops.Shops.Types.NPC.NPCManager;
+import max.hubbard.bettershops.Shops.Types.NPC.NPCShop;
+import max.hubbard.bettershops.Shops.Types.NPC.ShopsNPC;
+import max.hubbard.bettershops.Utils.NPCInfo;
+import max.hubbard.bettershops.Utils.TimingsManager;
+import max.hubbard.bettershops.Utils.Transaction;
 
 /**
  * ***********************************************************************
@@ -758,7 +796,7 @@ public class FileShop implements Shop {
 
     @Override
     public boolean useIcon() {
-        return getObject("Icon") != null && config.isInt("Icon") && getObject("Icon") != -1;
+        return getObject("Icon") != null && config.isInt("Icon") && getObject("Icon") != "-1";
     }
 
     public boolean isOpen() {

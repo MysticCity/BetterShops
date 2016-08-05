@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="H:/Programme/Repositories/BetterShops/repo/HolographicDisplaysAPI_v2.1.7.jar"/>
+	<classpathentry kind="lib" path="H:/Programme/Repositories/Libarys/craftbukkit-1.9.4.jar"/>
+	<classpathentry kind="lib" path="H:/Programme/Repositories/Libarys/spigot-api-1.9.4-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="H:/Programme/Repositories/Libarys/Vault.jar"/>
+	<classpathentry kind="lib" path="G:/Users/Niklas/Downloads/spigot/servertest/plugins/worldguard-6.1.2.jar"/>
+	<classpathentry kind="lib" path="G:/Users/Niklas/Downloads/spigot/servertest/plugins/worldedit-bukkit-6.1.2.jar"/>
+	<classpathentry kind="lib" path="G:/Users/Niklas/Downloads/spigot/servertest/plugins/citizens-2.0.18-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="G:/Users/Niklas/Downloads/spigot/servertest/plugins/HolographicDisplays.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

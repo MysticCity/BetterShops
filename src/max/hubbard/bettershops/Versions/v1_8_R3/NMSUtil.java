@@ -1,9 +1,6 @@
 package max.hubbard.bettershops.Versions.v1_8_R3;
 
-import net.minecraft.server.v1_8_R3.BiomeBase;
-import net.minecraft.server.v1_8_R3.BiomeBase.BiomeMeta;
-import net.minecraft.server.v1_8_R3.EntityInsentient;
-import net.minecraft.server.v1_8_R3.EntityTypes;
+
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -11,8 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.server.v1_9_R2.BiomeBase;
+import net.minecraft.server.v1_9_R2.BiomeBase.BiomeMeta;
+import net.minecraft.server.v1_9_R2.Entity;
+import net.minecraft.server.v1_9_R2.EntityHorse;
+import net.minecraft.server.v1_9_R2.EntityTypes;
+
 public class NMSUtil {
-    public void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass) {
+    public void registerEntity(String name, int id, Class<Entity> class1, Class<EntityHorse> class2) {
         try {
 
             /*
@@ -48,7 +51,7 @@ public class NMSUtil {
             */
             Method method = EntityTypes.class.getDeclaredMethod("a", Class.class, String.class, int.class);
             method.setAccessible(true);
-            method.invoke(null, customClass, name, id);
+            method.invoke(null, class2, name, id);
 
             /*
             * after doing the basic registering stuff , we have to register our
@@ -88,8 +91,8 @@ public class NMSUtil {
                                 */
                                 for (BiomeMeta meta : metaList) {
                                     Field clazz = BiomeMeta.class.getDeclaredFields()[0];
-                                    if (clazz.get(meta).equals(nmsClass)) {
-                                        clazz.set(meta, customClass);
+                                    if (clazz.get(meta).equals(class1)) {
+                                        clazz.set(meta, class2);
                                     }
                                 }
                             }

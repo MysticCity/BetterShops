@@ -1,11 +1,11 @@
 
 package max.hubbard.bettershops.Versions.v1_8_R3;
 
-import max.hubbard.bettershops.Utils.ReflectUtil;
-import net.minecraft.server.v1_8_R3.EnumProtocolDirection;
-import net.minecraft.server.v1_8_R3.NetworkManager;
-
 import java.lang.reflect.Field;
+
+import max.hubbard.bettershops.Utils.ReflectUtil;
+import net.minecraft.server.v1_9_R2.EnumProtocolDirection;
+import net.minecraft.server.v1_9_R2.NetworkManager;
 
 public class NPCNetworkManager extends NetworkManager {
 

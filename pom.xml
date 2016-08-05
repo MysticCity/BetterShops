@@ -43,4 +43,71 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+	  	<MinecraftVersion>1.9.4</MinecraftVersion>
+	  	<WorldguardVersion>6.1</WorldguardVersion>
+	  	<WorldeditVersion>6.1</WorldeditVersion>
+	  	<VaultVersion>1.6</VaultVersion>
+	  </properties>
+    <repositories>
+	    <repository>
+	        <id>sk89q-repo</id>
+	        <url>http://maven.sk89q.com/repo/</url>
+	    </repository>
+	     <repository>
+            <id>vault-repo</id>
+            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+         <repository>
+	        <id>spigot-repo</id>
+	        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+	    </repository>
+	</repositories>
+	<dependencies>
+	    <dependency>
+	        <groupId>com.sk89q</groupId>
+	        <artifactId>worldguard</artifactId>
+	    </dependency>
+	    <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--Spigot API-->
+	    <dependency>
+	        <groupId>org.spigotmc</groupId>
+	        <artifactId>spigot-api</artifactId>
+	        <scope>provided</scope>
+	    </dependency>
+	    <!--Bukkit API-->
+	    <dependency>
+	        <groupId>org.bukkit</groupId>
+	        <artifactId>bukkit</artifactId>
+	        <scope>provided</scope>
+	    </dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.spigotmc</groupId>
+				<artifactId>spigot-api</artifactId>
+				<version>${MinecraftVersion}-R0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bukkit</groupId>
+				<artifactId>bukkit</artifactId>
+				<version>${MinecraftVersion}-R0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sk89q</groupId>
+				<artifactId>worldguard</artifactId>
+				<version>6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>net.milkbowl.vault</groupId>
+				<artifactId>VaultAPI</artifactId>
+				<version>1.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

@@ -1,15 +1,11 @@
 package max.hubbard.bettershops.Menus.ShopMenus;
 
-import max.hubbard.bettershops.Configurations.Config;
-import max.hubbard.bettershops.Configurations.Language;
-import max.hubbard.bettershops.Configurations.Permissions;
-import max.hubbard.bettershops.Menus.MenuType;
-import max.hubbard.bettershops.Menus.ShopMenu;
-import max.hubbard.bettershops.Shops.Items.Actions.*;
-import max.hubbard.bettershops.Shops.Items.ShopItem;
-import max.hubbard.bettershops.Shops.Shop;
-import max.hubbard.bettershops.Utils.AnvilManager;
-import max.hubbard.bettershops.Utils.MaterialSearch;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -20,7 +16,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.*;
+import max.hubbard.bettershops.Configurations.Config;
+import max.hubbard.bettershops.Configurations.Language;
+import max.hubbard.bettershops.Configurations.Permissions;
+import max.hubbard.bettershops.Menus.MenuType;
+import max.hubbard.bettershops.Menus.ShopMenu;
+import max.hubbard.bettershops.Shops.Shop;
+import max.hubbard.bettershops.Shops.Items.ShopItem;
+import max.hubbard.bettershops.Shops.Items.Actions.ClickableItem;
+import max.hubbard.bettershops.Shops.Items.Actions.LeftClickAction;
+import max.hubbard.bettershops.Shops.Items.Actions.RightClickAction;
+import max.hubbard.bettershops.Shops.Items.Actions.ShiftClickAction;
+import max.hubbard.bettershops.Shops.Items.Actions.ShopItemStack;
+import max.hubbard.bettershops.Utils.AnvilManager;
+import max.hubbard.bettershops.Utils.MaterialSearch;
 
 /**
  * ***********************************************************************
@@ -222,7 +231,7 @@ public class OwnerSelling implements ShopMenu {
                         if (m.size() > 0) {
                             shop.createShopItem(new ItemStack(m.get(0)), shop.getNextSlotForPage(shop.getNextAvailablePage(true), true), shop.getNextAvailablePage(true), true);
                             p.sendMessage(Language.getString("Messages", "Prefix") + Language.getString("Messages", "AddItem"));
-                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 400, 400);
+                            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 400, 400);
                         } else {
                             p.sendMessage(Language.getString("Messages", "Prefix") + Language.getString("Messages", "InvalidItem"));
                         }

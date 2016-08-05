@@ -1,15 +1,26 @@
 package max.hubbard.bettershops.Versions.v1_8_R3.Entities;
 
-import net.minecraft.server.v1_8_R3.*;
+import java.lang.reflect.Field;
+import java.util.List;
+
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEnderman;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftEnderman;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftLivingEntity;
 import org.bukkit.entity.Enderman;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-import java.lang.reflect.Field;
-import java.util.List;
+import net.minecraft.server.v1_9_R2.DamageSource;
+import net.minecraft.server.v1_9_R2.EntityEnderman;
+import net.minecraft.server.v1_9_R2.EntityHuman;
+import net.minecraft.server.v1_9_R2.MethodProfiler;
+import net.minecraft.server.v1_9_R2.MinecraftServer;
+import net.minecraft.server.v1_9_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_9_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_9_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_9_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_9_R2.World;
+import net.minecraft.server.v1_9_R2.WorldServer;
 
 /**
  * ***********************************************************************
@@ -21,7 +32,10 @@ import java.util.List;
  * ************************************************************************
  */
 public class EndermanNPC extends EntityEnderman {
-    public EndermanNPC(World world) {
+    private boolean ai;
+
+
+	public EndermanNPC(World world) {
         super(world);
 
         List<?> goalB = (List<?>) getPrivateField("b", PathfinderGoalSelector.class, goalSelector);

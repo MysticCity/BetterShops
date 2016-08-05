@@ -10,12 +10,17 @@ package max.hubbard.bettershops.Versions.v1_8_R3;
  * ************************************************************************
  */
 
-import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Location;
 import org.bukkit.block.Sign;
-import org.bukkit.craftbukkit.v1_8_R3.block.CraftSign;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_9_R2.block.CraftSign;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+
+import net.minecraft.server.v1_9_R2.IChatBaseComponent;
+import net.minecraft.server.v1_9_R2.MinecraftServer;
+import net.minecraft.server.v1_9_R2.PacketPlayInUpdateSign;
+import net.minecraft.server.v1_9_R2.World;
+import net.minecraft.server.v1_9_R2.WorldServer;
 
 /**
  * ***********************************************************************
@@ -41,7 +46,7 @@ public class SignChanger {
 
         Location loc = sign.getLocation();
 
-        PacketPlayOutUpdateSign packet = new PacketPlayOutUpdateSign(w, new BlockPosition(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()), components);
+        PacketPlayInUpdateSign packet = new PacketPlayInUpdateSign();
 
 
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(packet);

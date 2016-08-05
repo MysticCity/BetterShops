@@ -1,9 +1,10 @@
 package max.hubbard.bettershops.Versions.v1_8_R3;
 
 import max.hubbard.bettershops.Versions.v1_8_R3.Entities.PlayerNPC;
-import net.minecraft.server.v1_8_R3.MinecraftServer;
-import net.minecraft.server.v1_8_R3.Packet;
-import net.minecraft.server.v1_8_R3.PlayerConnection;
+import net.minecraft.server.v1_9_R2.MinecraftServer;
+import net.minecraft.server.v1_9_R2.Packet;
+import net.minecraft.server.v1_9_R2.PlayerConnection;
+
 
 public class NPCConnection extends PlayerConnection {
 

@@ -1,15 +1,30 @@
 package max.hubbard.bettershops;
 
+import java.io.File;
+import java.sql.Connection;
+
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+
 import max.hubbard.bettershops.Commands.BSCommand;
 import max.hubbard.bettershops.Configurations.Blacklist;
 import max.hubbard.bettershops.Configurations.Config;
+import max.hubbard.bettershops.Configurations.Language;
 import max.hubbard.bettershops.Configurations.ConfigMenu.ConfigMenuListener;
 import max.hubbard.bettershops.Configurations.ConfigMenu.NPCChooser;
-import max.hubbard.bettershops.Configurations.Language;
 import max.hubbard.bettershops.Configurations.LanguageMenu.GUIMessageListener;
 import max.hubbard.bettershops.Configurations.LanguageMenu.LanguageInventory;
-import max.hubbard.bettershops.Listeners.*;
+import max.hubbard.bettershops.Listeners.AddItemListener;
+import max.hubbard.bettershops.Listeners.ClickableActionListener;
+import max.hubbard.bettershops.Listeners.CreateShop;
+import max.hubbard.bettershops.Listeners.Delete;
+import max.hubbard.bettershops.Listeners.NPCOpen;
+import max.hubbard.bettershops.Listeners.Opener;
+import max.hubbard.bettershops.Listeners.ShopMaintainer;
 import max.hubbard.bettershops.SQL.Database;
 import max.hubbard.bettershops.SQL.mysql.MySQL;
 import max.hubbard.bettershops.Shops.Shop;
@@ -27,13 +42,6 @@ import max.hubbard.bettershops.Utils.Metrics;
 import max.hubbard.bettershops.Versions.AnvilGUI;
 import max.hubbard.bettershops.Versions.TitleManager;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.sql.Connection;
 
 /**
  * ***********************************************************************

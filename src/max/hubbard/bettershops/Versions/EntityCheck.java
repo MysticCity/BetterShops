@@ -1,13 +1,14 @@
 package max.hubbard.bettershops.Versions;
 
-import max.hubbard.bettershops.Utils.WordsCapitalizer;
-import net.minecraft.server.v1_8_R3.World;
+import java.lang.reflect.Method;
+
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-import java.lang.reflect.Method;
+import max.hubbard.bettershops.Utils.WordsCapitalizer;
+import net.minecraft.server.v1_9_R2.World;
 
 /**
  * ***********************************************************************

@@ -1,5 +1,11 @@
 package max.hubbard.bettershops.Configurations;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -12,12 +18,6 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * ***********************************************************************
@@ -223,7 +223,7 @@ public class Blacklist implements Listener {
                             item.setAmount(1);
 
                             addItem(item);
-                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 400, 400);
+                            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 400, 400);
                             openBlacklistInventory(e.getInventory(), p, 1);
 
                             return;
@@ -261,7 +261,7 @@ public class Blacklist implements Listener {
                 //Remove Item
                 if (getItems().contains(e.getCurrentItem())) {
                     removeItem(e.getCurrentItem());
-                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 400, 400);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS, 400, 400);
                     openBlacklistInventory(e.getInventory(), p, 1);
 
                 }

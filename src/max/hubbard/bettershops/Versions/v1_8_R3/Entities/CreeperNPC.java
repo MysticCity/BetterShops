@@ -1,12 +1,17 @@
 package max.hubbard.bettershops.Versions.v1_8_R3.Entities;
 
-import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftCreeper;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftCreeper;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftLivingEntity;
 import org.bukkit.entity.Creeper;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+
+import net.minecraft.server.v1_9_R2.DamageSource;
+import net.minecraft.server.v1_9_R2.EntityCreeper;
+import net.minecraft.server.v1_9_R2.MinecraftServer;
+import net.minecraft.server.v1_9_R2.World;
+import net.minecraft.server.v1_9_R2.WorldServer;
 
 /**
  * ***********************************************************************
@@ -41,10 +46,6 @@ public class CreeperNPC extends EntityCreeper {
     public void e(float f, float f1) {
     }
 
-    @Override
-    public void t_() {
-
-    }
 
     public static Creeper spawn(Location location) {
 

@@ -1,9 +1,9 @@
 package max.hubbard.bettershops.Versions.v1_8_R3;
 
-import max.hubbard.bettershops.Core;
-import net.minecraft.server.v1_8_R3.*;
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +16,13 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
+import max.hubbard.bettershops.Core;
+import net.minecraft.server.v1_9_R2.BlockPosition;
+import net.minecraft.server.v1_9_R2.ChatComponentText;
+import net.minecraft.server.v1_9_R2.ContainerAnvil;
+import net.minecraft.server.v1_9_R2.EntityHuman;
+import net.minecraft.server.v1_9_R2.EntityPlayer;
+import net.minecraft.server.v1_9_R2.PacketPlayOutOpenWindow;
 
 public class AnvilGUI implements max.hubbard.bettershops.Versions.AnvilGUI {
     private class AnvilContainer extends ContainerAnvil {
