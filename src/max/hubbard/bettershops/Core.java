@@ -143,7 +143,7 @@ public class Core extends JavaPlugin {
 
                 //Choose Anvil GUI for Version
                 try {
-                    final Class<?> clazz = Class.forName("max.hubbard.bettershops.Versions." + version + ".AnvilGUI");
+                    final Class<?> clazz = Class.forName("max.hubbard.bettershops.Versions.v1_8_R3.AnvilGUI");
                     // Check if we have a NMSHandler class at that location.
                     if (clazz != null) {
                         if (AnvilGUI.class.isAssignableFrom(clazz)) { // Make sure it actually implements NMS
@@ -158,14 +158,14 @@ public class Core extends JavaPlugin {
                     boolean c = false;
 
                     if (v.contains("Spigot")) {
-                        if (version.equals("v1_8_R1") || version.equals("v1_8_R2") || version.equals("v1_8_R3")) {
+                        if (version.equals("v1_8_R1") || version.equals("v1_8_R2") || version.equals("v1_8_R3") || version.equals("v1_9_R2")) {
                             c = true;
                         }
                     }
 
 
                     if (c) {
-                        final Class<?> clazz2 = Class.forName("max.hubbard.bettershops.Versions." + version + ".TitleManager");
+                        final Class<?> clazz2 = Class.forName("max.hubbard.bettershops.Versions.v1_8_R3.TitleManager");
                         // Check if we have a NMSHandler class at that location.
 
                         if (clazz2 != null) {

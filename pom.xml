@@ -5,18 +5,23 @@
     <version>2.1</version>
     <name>BetterShops</name>
     <description>The Revolutionary Shop Plugin.</description>
-    <packaging>pom</packaging>
-
     <build>
         <defaultGoal>clean install</defaultGoal>
+        <sourceDirectory>${basedir}/src/</sourceDirectory>
+        <resources>
+        	<resource>
+        		<directory>${basedir}/Resources/</directory>
+        		<targetPath>.</targetPath>
+        	</resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.0.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -64,33 +69,14 @@
 	    </repository>
 	</repositories>
 	<dependencies>
-	    <dependency>
-	        <groupId>com.sk89q</groupId>
-	        <artifactId>worldguard</artifactId>
-	    </dependency>
-	    <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!--Spigot API-->
-	    <dependency>
-	        <groupId>org.spigotmc</groupId>
-	        <artifactId>spigot-api</artifactId>
-	        <scope>provided</scope>
-	    </dependency>
-	    <!--Bukkit API-->
-	    <dependency>
-	        <groupId>org.bukkit</groupId>
-	        <artifactId>bukkit</artifactId>
-	        <scope>provided</scope>
-	    </dependency>
-	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
+	   		<dependency>
 				<groupId>org.spigotmc</groupId>
 				<artifactId>spigot-api</artifactId>
+				<version>${MinecraftVersion}-R0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bukkit</groupId>
+				<artifactId>craftbukkit</artifactId>
 				<version>${MinecraftVersion}-R0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
@@ -108,6 +94,26 @@
 				<artifactId>VaultAPI</artifactId>
 				<version>1.6</version>
 			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	    <dependency>
+		    <groupId>com.sk89q</groupId>
+		    <artifactId>worldedit-bukkit</artifactId>
+		    <version>6.1.2</version>
+		    <scope>system</scope>
+		    <systemPath>${basedir}/repo/worldedit-bukkit-6.1.2.jar</systemPath>
+		</dependency>
+		<dependency>
+		    <groupId>net.citizensnpcs</groupId>
+		    <artifactId>citizens</artifactId>
+		    <version>2.0.18-SNAPSHOT</version>
+		    <scope>system</scope>
+		    <systemPath>${basedir}/repo/citizens-2.0.18-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<dependency>
+		    <groupId>com.gmail.filoghost</groupId>
+		    <artifactId>holographicdisplays</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${basedir}/repo/HolographicDisplays.jar</systemPath>
+		</dependency>
+	</dependencies>
 </project>
